@@ -196,8 +196,9 @@ picture {
 
 /* 教育コンテンツブロック */
 .education-block {
-    padding: 16px 10px;
-    margin: 16px;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
 }
 
 /* 質問エリア */
@@ -417,10 +418,7 @@ a.shover:hover * {
 
 /* 画像・動画を画面いっぱいに広げる */
 .full-bleed {
-    width: 100vw;
-    max-width: 100vw;
-    margin-left: calc(50% - 50vw);
-    margin-right: calc(50% - 50vw);
+    width: 100%;
 }
 
 .full-bleed img,
@@ -465,10 +463,10 @@ a.shover:hover * {
 .education-block>video,
 #result .result-more-trigger-wrap,
 #result .last-image {
-    width: 100vw;
-    max-width: 100vw;
-    margin-left: calc(50% - 50vw);
-    margin-right: calc(50% - 50vw);
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
     padding: 0 !important;
 }
 
@@ -521,9 +519,15 @@ a.shover:hover * {
     margin: 0 auto !important;
 }
 
+.video-carousel {
+    overflow: hidden;
+    width: 100%;
+}
+
 .swiper {
     width: 100%;
     padding: 20px 0 40px;
+    overflow: hidden;
 }
 
 .swiper-slide {
@@ -712,14 +716,14 @@ a.shover:hover * {
         <picture>
             <img src="https://file.mysquadbeyond.com/uploads/article_photo/photo/6746842/d3edb5e0-396f-4a94-afdd-f029dc873131.jpg" class="lazyload">
         </picture>
-        <video src="https://file.mysquadbeyond.com/uploads/article_photo/photo/6746848/d42f0790-df4f-4d03-ac72-c64506c64699.mp4" controls playsinline></video>
+        <video src="https://file.mysquadbeyond.com/uploads/article_photo/photo/6746848/d42f0790-df4f-4d03-ac72-c64506c64699.mp4" controlslist="nodownload" playsinline="" loop="true" muted="true" autoplay="true" class="lazyload"></video>
     </section>
 
     <!-- Q3 -->
     <section class="question-block hidden" id="q3">
         <div class="wrap-img">
             <picture data-index="1">
-                <img src="https://file.mysquadbeyond.com/uploads/article_photo/photo/6746530/a1b2c3d4-e5f8f-4634-a325-6cc0ff49fc95.jpg" width="750" height="500" class="content-img lazyload" alt="質問3画像" data-index="1">
+                <img src="https://file.mysquadbeyond.com/uploads/article_photo/photo/6746579/8cd28fbd-805c-4983-9e64-5081d4c24056.jpg" width="750" height="500" class="content-img lazyload" alt="質問3画像" data-index="1">
             </picture>
         </div>
         <div class="options">
@@ -734,7 +738,7 @@ a.shover:hover * {
     <!-- 教育コンテンツ3 -->
     <section class="education-block hidden" id="edu3">
         <div class="wrap-img">
-            <img src="https://file.mysquadbeyond.com/uploads/article_photo/photo/6746535/edu3-main.jpg" alt="" class="lazyload">
+            <img src="https://file.mysquadbeyond.com/uploads/article_photo/photo/6746706/622ac7d7-4468-4691-b88c-1d1690e44ee4.jpg" alt="" class="lazyload">
         </div>
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
