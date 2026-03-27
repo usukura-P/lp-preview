@@ -531,13 +531,19 @@ a.shover:hover * {
 }
 
 .swiper-slide {
-    width: 260px;
+    width: 100%;
+}
+
+.swiper-slide img {
+    width: 100%;
+    height: auto;
+    border-radius: 0;
 }
 
 .swiper-slide video {
     width: 100%;
     height: auto;
-    border-radius: 12px;
+    border-radius: 0;
     object-fit: cover;
 }
 
@@ -988,7 +994,7 @@ a.shover:hover * {
             if (swiperInitialized) return;
             swiperInitialized = true;
             new Swiper(".mySwiper", {
-                slidesPerView: 1.3,
+                slidesPerView: 1,
                 spaceBetween: 12,
                 centeredSlides: true,
                 loop: false,
