@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Preview</title>
-    <!-- head.html -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
     <style>
@@ -18,7 +17,7 @@ body {
     font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
     line-height: 1.6;
     color: #333;
-    background: #f9c5dd;
+    background: #ffdfdd;
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
 }
@@ -52,7 +51,6 @@ picture {
     max-width: 750px;
     margin: 0 auto;
     padding: 0;
-    margin-bottom: -1em;
 }
 
 /* FVメディア */
@@ -157,13 +155,8 @@ picture {
 }
 
 @keyframes bounce {
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
 }
 
 @keyframes shadowPulse {
@@ -194,11 +187,11 @@ picture {
 
 /* ブロック共通 */
 .question-block {
-    padding: 16px 10px;
-    margin: 16px;
-    background: #FDECF4;
-    border-radius: 16px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    background: transparent;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
 }
 
 /* 教育コンテンツブロック */
@@ -211,13 +204,13 @@ picture {
 .options {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 10px;
 }
 
 .option-btn {
     width: 100%;
-    min-height: 56px;
-    padding: 16px 24px;
+    min-height: 0;
+    padding: 10px 24px;
     font-size: 16px;
     font-weight: 600;
     border: 2px solid #e0e0e0;
@@ -226,6 +219,7 @@ picture {
     color: #333;
     cursor: pointer;
     transition: all 0.3s ease;
+    user-select: none;
     -webkit-tap-highlight-color: transparent;
 }
 
@@ -235,9 +229,9 @@ picture {
 }
 
 .option-btn.selected {
-    background: #ab3d76;
+    background: #ff7777;
     color: #fff;
-    border-color: #ab3d76;
+    border-color: #ff7777;
 }
 
 /* 教育コンテンツ */
@@ -329,25 +323,13 @@ picture {
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes fadeLeft {
-    from {
-        opacity: 0;
-        transform: translateX(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
 }
 
 .animate73,
@@ -368,25 +350,12 @@ a.a-btn {
     position: relative;
     display: inline-block;
     margin: auto;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    -o-box-sizing: border-box;
-    -ms-box-sizing: border-box;
     box-sizing: border-box;
 }
 
 a.a-btn img {
     display: block;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    -o-box-sizing: border-box;
-    -ms-box-sizing: border-box;
-}
-
-img.a-main {
-    width: 100%;
-    position: relative;
-    z-index: 54;
+    box-sizing: border-box;
 }
 
 a.shover:hover * {
@@ -394,21 +363,11 @@ a.shover:hover * {
 }
 
 @keyframes animate73 {
-    0% {
-        transform: scale(0.92);
-    }
-    40% {
-        transform: scale(0.97);
-    }
-    60% {
-        transform: scale(0.86);
-    }
-    80% {
-        transform: scale(1);
-    }
-    100% {
-        transform: scale(0.92);
-    }
+    0% { transform: scale(0.92); }
+    40% { transform: scale(0.97); }
+    60% { transform: scale(0.86); }
+    80% { transform: scale(1); }
+    100% { transform: scale(0.92); }
 }
 
 .animate73 {
@@ -419,10 +378,168 @@ a.shover:hover * {
 }
 
 .small {
-    font-size: .4em;
+    font-size: 11px;
     text-align: right;
     line-height: 1.0;
     margin-top: 0em;
+}
+
+/* 質問パートをカードではなく縦積みにする */
+.question-block .step-indicator {
+    margin: 24px 16px 16px;
+}
+
+.question-block .wrap-img,
+.question-block .wrap-video {
+    margin: 0;
+}
+
+.question-block .content-img,
+.question-block video {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0;
+    border-radius: 0;
+}
+
+.question-block .question-title,
+.question-block h2,
+.question-block h3,
+.question-block p {
+    margin-left: 16px;
+    margin-right: 16px;
+}
+
+.question-block .options {
+    padding: 16px;
+}
+
+/* 画像・動画を画面いっぱいに広げる */
+.full-bleed {
+    width: 100vw;
+    max-width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+}
+
+.full-bleed img,
+.full-bleed video {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.content-img {
+    margin: 0 !important;
+}
+
+.result-more-trigger-wrap {
+    text-align: center;
+    margin: 16px 0 0;
+}
+
+.result-more-btn {
+    display: block;
+    width: 90%;
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 0;
+    background: none;
+    border: none;
+}
+
+.result-more-btn img {
+    width: 100%;
+    display: block;
+}
+
+.result-more-btn.hidden {
+    display: none;
+}
+
+/* education-block 内の画像・動画を左右いっぱいにする */
+.education-block .wrap-img,
+.education-block .wrap-video,
+.education-block>picture,
+.education-block>video,
+#result .result-more-trigger-wrap,
+#result .last-image {
+    width: 100vw;
+    max-width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    padding: 0 !important;
+}
+
+.education-block .wrap-img img,
+.education-block .wrap-video video,
+.education-block>picture img,
+.education-block>video,
+#result .result-more-trigger-wrap img,
+#result .last-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+}
+
+#result>span {
+    display: block;
+    font-size: 0;
+    line-height: 0;
+}
+
+#result .result-more-btn {
+    display: block;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+}
+
+.cta-wrap {
+    display: block !important;
+    width: 460px !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+}
+
+.cta-wrap a {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.cta-wrap .cta-img {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 auto !important;
+}
+
+.swiper {
+    width: 100%;
+    padding: 20px 0 40px;
+}
+
+.swiper-slide {
+    width: 260px;
+}
+
+.swiper-slide video {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: #333;
 }
 
 .a-btn73 {
@@ -449,229 +566,81 @@ a.shover:hover * {
     </style>
 </head>
 <body>
-    <!-- index.html -->
     <div class="container">
-    <div data-sb-part-id="18352" class="sb-custom-part-mlgv9yfm6qponthdygc">
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                // 現在の日付を取得
-                var now = new Date();
-                // 当月の末日を算出（翌月の0日＝当月末日）
-                var lastDay = new Date(now.getFullYear(), now.getMonth() + 1, 0);
-
-                // 表示用の各値を取得
-                var month = lastDay.getMonth() + 1; // 月 (0始まりなので+1)
-                var date = lastDay.getDate(); // 日
-                var dayNames = ["日", "月", "火", "水", "木", "金", "土"];
-                var day = dayNames[lastDay.getDay()]; // 曜日
-
-                // ウィジェット内の表示エリアを更新
-                var container = document.querySelector('.js-d-date');
-                if (container) {
-                    var monthEl = container.querySelector('.js-dd-month');
-                           if (monthEl) monthEl.textContent = month;
-                    if (dateEl) dateEl.textContent = date;
-                    if (dayEl) dayEl.textContent = day;
-                }
-            });
-
-        </script>
-
-        <!-- 更新後のウィジェット① -->
-        <span class="flash">
-            <p><b>
-                    <font color="#ff0000"><span class="js-d-date txt-day"><span class="js-dd-month"></span>/<span class="js-dd-date"></span>
-                            (<span class="js-dd-day"></span>)
-                        </span>までの期間限定キャンペーン
-                    </font>
-                </b></p>
-        </span>
-    </div>
-    <style>
-        .sb-custom-part-mlgv9yfm6qponthdygc
-
-        /* 点滅アニメーション（flash） */
-        .flash {
-            animation: flash 1s ease infinite alternate;
-            display: flex;
-            justify-content: center;
-            /* 中央寄せ */
-            background-color: yellow;
-            margin-bot      text-align: center;
-            line-height: 20px;
-            padding: 10px;
-        }
-
-        /* アニメーションキーフレーム */
-        @keyframes flash {
-            50% {
-                opacity: 0;
-            }
-
-
-            .sb-custom-part-mlgv9yfm6qponthdygc {}
-
-            .sb-custom-part-mlgv9yfm6qponthdygc
-
-            /* 日付部分の文字色（ウィジェット②のスタイル参考） */
-            .txt-day {
-                color: red;
-            }
-
-    </style>
-
-
-
-
     <!-- FV -->
-    <br> <video controlslist="nodownload" playsinline="" loop="true" muted="true" autoplay="true" class="lazyload">
-        <source type="video/mp4" src="https://file.mysquadbeyond.com/uploads/article_photo/photo/6559490/463c9fef-a06d-4a5f-afcb-0fca3755d52a.mp4">
+    <video controlslist="nodownload" playsinline="" loop="true" muted="true" autoplay="true" class="lazyload">
+        <source type="video/mp4" src="https://file.mysquadbeyond.com/uploads/article_photo/photo/6746526/7f1f72f8-cc86-4b22-b033-72c6a8003b9f.mp4">
     </video>
 
     <br>
-    <div data-sb-part-id="18385" class="sb-custom-part-mlk76p60x5309e25n2">
-        <!--複数のアコーディオンwidgetを追加される場合は、input id="tab-two"などのように1つ目と異な="checkbox" name="tabs"><label for="tab-two"><span style="font-weight: normal;"><span style="font-size: 11px;" class="sb-fs-free">料金詳細</span></span></label>
+    <div data-sb-part-id="18536" class="sb-custom-part-mn6thpspxi81cwb41zj">
+        <div class="cp_actab">
+            <input id="tab-two" type="checkbox" name="tabs"><label for="tab-two"><span style="font-weight: normal;">料金詳細</span></label>
             <div class="cp_actab-content">
                 <p>
-                    <font color="#0a0e13"><span style="font-size: 11px;" class="sb-fs-free">　施術名：TCB二重術</span><br><span style="font-size: 11px;" class="sb-fs-free">　1点留め 16,330円(税込)</span><br><span style="font-size: 11px;" class="sb-fs-free">　2点留め 29,800円(税込)</span><br><span style="font-size: 11px;" class="sb-fs-free">　3点留め 44,800円(税込)※対象院：梅田大阪駅前院</span><br><span style="font-size: 11px;" class="sb-fs-free">　施術名：青春二重術 ※20歳未満限定施術</span><br><span style="font-size: 11px;" class="sb-fs-free">　2点留め 39,000円(税込)</span><br><span style="font-size: 11px;" class="sb-fs-free">　施術名：TCB式1dayクイックアイ</span><br><span style="font-size: 11px;" class </p>
+                    "施術名：TCB二重術<br>
+                    1点留め 16,330円(税込)<br>
+                    2点留め 29,800円(税込)<br>
+                    3点留め 44,800円(税込)※対象院：梅田大阪駅前院<br><br>
+
+                    施術名：青春二重術 ※20歳未満限定施術<br>
+                    2点留め 39,000円(税込)サービス（※施術時の1回のみ。保証時は別料金）"
+                </p>
             </div>
         </div>
     </div>
     <style>
-        .sb-custom-part-mlk76p60x5309e25n2 .cp_actab {
+        .sb-custom-part-mn6thpspxi81cwb41zj .cp_actab {
             position: relative;
             overflow: hidden;
             width: 100%;
-            margin: 0 auto;
+            margin-top: -2.0em;
             border: none;
             border-radius: 0;
-            color: #0a0e13;
-            margin-top: -2em;
+            color: #000;
         }
 
-        .sb-custom-part-mlk76p60x5309e25n2 .cp_actab input {
+        .sb-custom-part-mn6thpspxi81cwb41zj .cp_actab input {
             position: absolute;
             z-index: -1;
             opacity: 0;
         }
 
-        .sb-custom-part-mlk76p60x5309e25n2 .cp_actab label {
+        .sb-custom-part-mn6thpspxi81cwb41zj .cp_actab label {
             font-weight: bold;
-            line-height: 3;
+            line-height: 2;
             position: relative;
             display: block;
             padding: 0 0 0 1em;
             cursor: pointer;
             margin: 0 0 1px 0;
-            background: #FED4E2;
-            border-bottom: 1px solid #FED4E2;
+            background: #FCDCE0;
+            border-bottom: 1px solid #FCDCE0;
         }
 
-        .sb-custom-part-mlk76p60x5309e25n2 .cp_actab .cp_actab-content {
+        .sb-custom-part-mn6thpspxi81cwb41zj .cp_actab .cp_actab-content {
             overflow: hidden;
             max-height: 0;
             -webkit-transition: max-height 0.35s;
             transition: max-height 0.35s;
             color: #333;
             background: #fff;
-            border-radius: 10px;
-
-        }
-
-        .sb-custom-part-mlk76p60x5309e25n2 .cp_actab .cp_actab-content p {
-            margin: 0em;
-            font-size: 10px;
-            line-height: 1.0
-        }
-
-        .sb-custom-part-mlk76p60x5309e25n2
-
-        /* :checked */
-        .cp_actab input:checked~.cp_actab-content {
-            max-height: 20em;
-        }
-
-        .sb-custom-part-mlk76p60x5309e25n2
-
-        /* Icon */
-        .cp_actab label::after {
-            line-height: 3;
-            position: absolute;
-            top: 0;
-            right: 0;
-            display: block;
-            width: 3em;
-            height: 3em;
-            -webkit-transition: all 0.35s;
-            transition: all 0.35s;
-            text-align: center;
-        }
-
-        .sb-custom-part-mlk76p60x5309e25n2 .cp_actab input[type=checkbox]+label::after {
-            content: '+';
-        }
-
-        .sb-custom-part-mlk76p60x5309e25n2 .cp_actab input[type=checkbox]:checked+label::after {
-            transform: rotate(315deg);
-        }
-
-    </style>
-    <style>
-        .sb-custom-part-mlgwmbw86zmk696kwct .cp_actab {
-            position: relative;
-            overflow: hidden;
-            width: 100%;
-            margin: 0 auto;
-            border: none;
             border-radius: 0;
-            color: #888;
-            margin-top: 0em;
         }
 
-        .sb-custom-part-mlgwmbw86zmk696kwct .cp_actab input {
-            position: absolute;
-            z-index: -1;
-            opacity: 0;
-        }
-
-        .sb-custom-part-mlgwmbw86zmk696kwct .cp_actab label {
-            font-weight: bold;
-            line-height: 3;
-            position: relative;
-            display: block;
-            padding: 0 0 0 1em;
-            cursor: pointer;
-            margin: 0 0 1px 0;
-            background: #ffd3e6;
-            border-bottom: 1px solid #ffd3e6;
-        }
-
-        .sb-custom-part-mlgwmbw86zmk696kwct .cp_actab .cp_actab-content {
-            overflow: hidden;
-            max-height: 0;
-            -webkit-transition: max-height 0.35s;
-            transition: max-height 0.35s;
-            color: #333;
-            background: #fff;
-            border-radius: 10px;
-
-        }
-
-        .sb-custom-part-mlgwmbw86zmk696kwct .cp_actab .cp_actab-content p {
+        .sb-custom-part-mn6thpspxi81cwb41zj .cp_actab .cp_actab-content p {
             margin: 0em;
-            font-size: 10px;
+            font-size: 11px;
             line-height: 1.0
         }
 
-        .sb-custom-part-mlgwmbw86zmk696kwct
-
+        .sb-custom-part-mn6thpspxi81cwb41zj
         /* :checked */
         .cp_actab input:checked~.cp_actab-content {
-            max-height: 20em;
+            max-height: 600px;
         }
 
-        .sb-custom-part-mlgwmbw86zmk696kwct
-
+        .sb-custom-part-mn6thpspxi81cwb41zj
         /* Icon */
         .cp_actab label::after {
             line-height: 2;
@@ -679,812 +648,329 @@ a.shover:hover * {
             top: 0;
             right: 0;
             display: block;
-            width: 3em;
-            height: 3em;
+            width: 2em;
+            height: 2em;
             -webkit-transition: all 0.35s;
             transition: all 0.35s;
             text-align: center;
         }
 
-        .sb-custom-part-mlgwmbw86zmk696kwct .cp_actab input[type=checkbox]+label::after {
+        .sb-custom-part-mn6thpspxi81cwb41zj .cp_actab input[type=checkbox]+label::after {
             content: '+';
         }
 
-        .sb-custom-part-mlgwmbw86zmk696kwct .cp_actab input[type=checkbox]:checked+label::after {
+        .sb-custom-part-mn6thpspxi81cwb41zj .cp_actab input[type=checkbox]:checked+label::after {
             transform: rotate(315deg);
         }
-
     </style>
-    <style>
-        .sb-custom-part-mlgwj44c2g819as3qid .cp_actab {
-            position: relative;
-            overflow: hidden;
-            width: 100%;
-            margin: 0 auto;
-            border: none;
-            border-radius: 0;
-            color: #888;
-            margin-top: 0em;
-        }
-
-        .sb-custom-part-mlgwj44c2g819as3qid .cp_actab input {
-            position: absolute;
-            z-index: -1;
-            opacity: 0;
-        }
-
-        .sb-custom-part-mlgwj44c2g819as3qid .cp_actab label {
-            font-weight: bold;
-            line-height: 3;
-            position: relative;
-            display: block;
-            padding: 0 0 0 1em;
-            cursor: pointer;
-            margin: 0 0 1px 0;
-            background: #FBC7DD;
-            border-bottom: 1px solid #FBC7DD;
-        }
-
-        .sb-custom-part-mlgwj44c2g819as3qid .cp_actab .cp_actab-content {
-            overflow: hidden;
-            max-height: 0;
-            -webkit-transition: max-height 0.35s;
-            transition: max-height 0.35s;
-            color: #333;
-            background: #fff;
-            border-radius: 10px;
-
-        }
-
-        .sb-custom-part-mlgwj44c2g819as3qid .cp_actab .cp_actab-content p {
-            margin: 0em;
-            font-size: 10px;
-            line-height: 1.0
-        }
-
-        .sb-custom-part-mlgwj44c2g819as3qid
-
-        /* :checked */
-        .cp_actab input:checked~.cp_actab-content {
-            max-height: 20em;
-        }
-
-        .sb-custom-part-mlgwj44c2g819as3qid
-
-        /* Icon */
-        .cp_actab label::after {
-            line-height: 2;
-            position: absolute;
-            top: 0;
-            right: 0;
-            display: block;
-            width: 3em;
-            height: 3em;
-            -webkit-transition: all 0.35s;
-            transition: all 0.35s;
-            text-align: center;
-        }
-
-        .sb-custom-part-mlgwj44c2g819as3qid .cp_actab input[type=checkbox]+label::after {
-            content: '+';
-        }
-
-        .sb-custom-part-mlgwj44c2g819as3qid .cp_actab input[type=checkbox]:checked+label::after {
-            transform: rotate(315deg);
-        }
-
-    </style>
-    <style>
-        .sb-custom-part-mlgw89xp9u9uyvf3b1 .cp_actab {
-            position: relative;
-            overflow: hidden;
-            width: 100%;
-            margin: 0 auto;
-            border: none;
-            border-radius: 0;
-            color: #888;
-            margin-top: -2em;
-        }
-
-        .sb-custom-part-mlgw89xp9u9uyvf3b1 .cp_actab input {
-            position: absolute;
-            z-index: -1;
-            opacity: 0;
-        }
-
-        .sb-custom-part-mlgw89xp9u9uyvf3b1 .cp_actab label {
-            font-weight: bold;
-            line-height: 3;
-            position: relative;
-            display: block;
-            padding: 0 0 0 1em;
-            cursor: pointer;
-            margin: 0 0 1px 0;
-            background: #FACCCC;
-            border-bottom: 1px solid #FACCCC;
-        }
-
-        .sb-custom-part-mlgw89xp9u9uyvf3b1 .cp_actab .cp_actab-content {
-            overflow: hidden;
-            max-height: 0;
-            -webkit-transition: max-height 0.35s;
-            transition: max-height 0.35s;
-            color: #333;
-            background: #fff;
-            border-radius: 10px;
-
-        }
-
-        .sb-custom-part-mlgw89xp9u9uyvf3b1 .cp_actab .cp_actab-content p {
-            margin: 0em;
-            font-size: 10px;
-            line-height: 1.0
-        }
-
-        .sb-custom-part-mlgw89xp9u9uyvf3b1
-
-        /* :checked */
-        .cp_actab input:checked~.cp_actab-content {
-            max-height: 20em;
-        }
-
-        .sb-custom-part-mlgw89xp9u9uyvf3b1
-
-        /* Icon */
-        .cp_actab label::after {
-            line-height: 3;
-            position: absolute;
-            top: 0;
-            right: 0;
-            display: block;
-            width: 3em;
-            height: 3em;
-            -webkit-transition: all 0.35s;
-            transition: all 0.35s;
-            text-align: center;
-        }
-
-        .sb-custom-part-mlgw89xp9u9uyvf3b1 .cp_actab input[type=checkbox]+label::after {
-            content: '+';
-        }
-
-        .sb-custom-part-mlgw89xp9u9uyvf3b1 .cp_actab input[type=checkbox]:checked+label::after {
-            transform: rotate(315deg);
-        }
-
-    </style>
-
-
-    <style>
-        .sb-custom-part-mlgvb1j5zviprcgerr .cp_actab {
-            position: relative;
-            overflow: hidden;
-            width: 100%;
-            margin: 0 auto;
-            border: none;
-            border-radius: 0;
-            color: #888;
-        }
-
-        .sb-custom-part-mlgvb1j5zviprcgerr .cp_actab input {
-            position: absolute;
-            z-index: -1;
-            opacity: 0;
-        }
-
-        .sb-custom-part-mlgvb1j5zviprcgerr .cp_actab label {
-            font-weight: bold;
-            line-height: 3;
-            position: relative;
-            display: block;
-            padding: 0 0 0 1em;
-            cursor: pointer;
-            margin: 0 0 1px 0;
-            background: #eee;
-            border-bottom: 1px solid #bbb;
-        }
-
-        .sb-custom-part-mlgvb1j5zviprcgerr .cp_actab .cp_actab-content {
-            overflow: hidden;
-            max-height: 0;
-            -webkit-transition: max-height 0.35s;
-            transition: max-height 0.35s;
-            color: #333;
-            background: #fff;
-            border-radius: 10px;
-
-        }
-
-        .sb-custom-part-mlgvb1j5zviprcgerr .cp_actab .cp_actab-content p {
-            margin: 0em;
-            font-size: 10px;
-            line-height: 1.0
-        }
-
-        .sb-custom-part-mlgvb1j5zviprcgerr
-
-        /* :checked */
-        .cp_actab input:checked~.cp_actab-content {
-            max-height: 20em;
-        }
-
-        .sb-custom-part-mlgvb1j5zviprcgerr
-
-        /* Icon */
-        .cp_actab label::after {
-            line-height: 3;
-            position: absolute;
-            top: 0;
-            right: 0;
-            display: block;
-            width: 3em;
-            height: 3em;
-            -webkit-transition: all 0.35s;
-            transition: all 0.35s;
-            text-align: center;
-        }
-
-        .sb-custom-part-mlgvb1j5zviprcgerr .cp_actab input[type=checkbox]+label::after {
-            content: '+';
-        }
-
-        .sb-custom-part-mlgvb1j5zviprcgerr .cp_actab input[type=checkbox]:checked+label::after {
-            transform: rotate(315deg);
-        }
-
-    </style>
-
-
-
-    <!-- 注釈 -->
-    <p class="small">
-        <font color="#0a0e13"><span style="font-size: 11px;" class="sb-fs-free">※画像はイメージです※個人差があります※1円以上の契約で割引適用※初回来院限定クーポン適用価格<br>※2025年7月アンケート n=2,378人(TCB調べ)「TCBで受けた施術の満足度を教えてください」に対し「非常に満足している」「満足している」と回答した方の割合</span></font>
-    </p>
 
     <!-- Q1 -->
     <section class="question-block" id="q1">
-        <div class="step-indicator" id="stepIndicator1">
-            <div class="step-progress">
-                <div class="step-progress-fill" id="progressFill1"></div>
-            </div>
-            <div class="step-item active" data-step="1">
-                <div class="step-circle">
-                    <span>1</span>
-                </div>
-            </div>
-            <div class="step-item" data-step="2">
-                <div class="step-circle">
-                    <span>2</span>
-                </div>
-            </div>
-            <div class="step-item" data-step="3">
-                <div class="step-circle">
-                    <span>3</span>
-                </div>
-            </div>
-            <div class="step-item" data-step="4">
-                <div class="step-circle">
-                    <span>4</span>
-                </div>
-            </div>
-        </div>
-        <p class="question-text">まぶたのたるみを解消して<br>ぱっちり二重になりたいですか？</p>
-
-        <!-- 画像追加 -->
         <div class="wrap-img">
-            <picture data-index="1">
-                <img src="https://file.mysquadbeyond.com/uploads/article_photo/photo/6558804/498dfb36-1a2d-464c-969f-0e4466275098.jpg" width="750" height="500" class="content-img lazyload" alt="質問1画像" data-index="1">
+            <picture data-index="3">
+                <img src="https://file.mysquadbeyond.com/uploads/article_photo/photo/6746523/d12670fa-85e3-48c8-b511-96eba3432fac.jpg" width="750" height="500" class="content-img lazyload" alt="質問1画像" data-index="3">
             </picture>
         </div>
         <div class="options">
-            <button class="option-btn" data-question="1" data-answer="1">はい</button>
-            <button class="option-btn" data-question="1" data-answer="2">いいえ</button>
+            <button class="option-btn" data-question="1" data-answer="1">濃くてはっきり目立つシミ</button>
+            <button class="option-btn" data-question="1" data-answer="2">ぼんやり広がるシミ</button>
+            <button class="option-btn" data-question="1" data-answer="3">そばかすのような細かいシミ</button>
+            <button class="option-btn" data-question="1" data-answer="4">最近シミが増えてきた</button>
         </div>
     </section>
 
-    <!-- 教育コンテンツ1 -->
-    <section class="education-block hidden" id="edu1">
-        <div data-sb-part-id="15364" class="sb-custom-part-mkgjwi33gyjismtq8jc">
-            <div class="media-box">
-                <img src="https://file.mysquadbeyond.com/uploads/article_photo/photo/6558803/8f854b3c-7c69-4547-ba75-d846cfd6ef31.jpg" alt="" height="386" width="580" draggable="false" class="lazyload">
-
-                <video controlslist="nodownload" loop="true" muted="true" name="media" playsinline="" height="328" width="580" class="lazyload">
-                    <source type="video/mp4" src="https://file.mysquadbeyond.com/uploads/article_photo/photo/6558805/26fe57c3-3e79-4186-a238-02ca07e377ca.mp4">
-                </video>
-
-                <img src="https://file.mysquadbeyond.com/uploads/article_photo/photo/6559488/8c773f0f-f386-4ef0-830b-c6242624386e.png" alt="" height="386" width="580" draggable="false" class="lazyload">
-            </div>
-        </div>
-        <style>
-            .sb-custom-part-mkgjwi33gyjismtq8jc img,
-            .sb-custom-part-mkgjwi33gyjismtq8jc video {
-                width: 100%;
-                height: auto !important;
-                margin-top: 0 !important;
-                margin-bottom: 0 !important;
-                display: block !important;
-            }
-
-            .sb-custom-part-mkgjwi33gyjismtq8jc .media-box {
-                max-width: unset;
-                margin: 0 -20px !important;
-            }
-        </style>
-        <br>
-        <button class="next-btn">次の質問へ</button>
-    </section><br>
-
     <!-- Q2 -->
     <section class="question-block hidden" id="q2">
-        <div class="step-indicator" id="stepIndicator2">
-            <div class="step-progress">
-                <div class="step-progress-fill" id="progressFill2"></div>
-            </div>
-            <div class="step-item completed" data-step="1">
-                <div class="step-circle">
-                    <span>1</span>
-                </div>
-            </div>
-            <div class="step-item active" data-step="2">
-                <div class="step-circle">
-                    <span>2</span>
-                </div>
-            </div>
-            <div class="step-item" data-step="3">
-                <div class="step-circle">
-                    <span>3</span>
-                </div>
-            </div>
-            <div class="step-item" data-step="4">
-                <div class="step-circle">
-                    <span>4</span>
-                </div>
-            </div>
-        </div>
-        <p class="question-text">ぱっちり二重になったら<br>どんないいことがあると思いますか？</p>
         <div class="wrap-img">
             <picture data-index="3">
-                <img src="https://file.mysquadbeyond.com/uploads/article_photo/photo/6476118/9bac0908-ec01-4ae9-be70-29eb06ded885.jpg" width="750" height="500" class="content-img lazyload" alt="質問2画像" data-index="3">
+                <img src="https://file.mysquadbeyond.com/uploads/article_photo/photo/6746528/2f54be6e-2cd7-46a1-bfb0-b56506fc488d.jpg" width="750" height="500" class="content-img lazyload" alt="質問2画像" data-index="3">
             </picture>
         </div>
-        <p class="small">
-            <font color="#0a0e13"><span style="font-size: 11px;" class="sb-fs-free">※個人差があります</span></font>
-        </p>
-
         <div class="options">
-            <button class="option-btn" data-question="2" data-answer="1">メイクの時間が楽しくなる</button>
-            <button class="option-btn" data-question="2" data-answer="2">自分に自信が持てる</button>
-            <button class="option-btn" data-question="2" data-answer="3">周りからの印象が変わる</button>
-            <button class="option-btn" data-question="2" data-answer="4">視界が広くなって<br>細かいものが見やすくなる</button>
+            <button class="option-btn" data-question="2" data-answer="1">すっぴんをためらうとき</button>
+            <button class="option-btn" data-question="2" data-answer="2">メイクで隠しきれないとき</button>
+            <button class="option-btn" data-question="2" data-answer="3">肌がきれいな人と会ったとき</button>
         </div>
     </section>
 
     <!-- 教育コンテンツ2 -->
     <section class="education-block hidden" id="edu2">
         <picture>
-            <img src="https://file.mysquadbeyond.com/uploads/article_photo/photo/6480880/c19cf03e-1f04-469e-a46f-621395882550.jpg" class="lazyload">
+            <img src="https://file.mysquadbeyond.com/uploads/article_photo/photo/6746837/84e63d13-dcb3-4c92-8b1c-eb98f190d7bf.jpg" class="lazyload">
         </picture>
-        <!-- 矢印 -->
-        <div data-sb-part-id="1449" class="sb-custom-part-mkqr4j6499yto5bf4p">
-            <div class="cp_arrows">
-                <div class="cp_arrow cp_arrowfirst"></div>
-                <div class="cp_arrow cp_arrowsecond"></div>
-            </div>
-        </div>
-        <style>
-            .sb-custom-part-mkqr4j6499yto5bf4p .cp_arrows {
-                position: relative;
-                height: 50px;
-                margin-top: 1em;
-            }
-
-            .sb-custom-part-mkqr4j6499yto5bf4p .cp_arrows .cp_arrowfirst {
-                animation: arrow-move08 2s ease-in-out infinite;
-            }
-
-            .sb-custom-part-mkqr4j6499yto5bf4p .cp_arrows .cp_arrowsecond {
-                animation: arrow-move08 2s 1s ease-in-out infinite;
-            }
-
-            .sb-custom-part-mkqr4j6499yto5bf4p .cp_arrows .cp_arrow {
-                position: absolute;
-                left: 50%;
-                transform: translateX(-50%);
-                opacity: 0;
-            }
-
-            @keyframes arrow-move08 {
-                0% {
-                    top: 40%;
-                    opacity: 0;
-                }
-                70% {
-                    opacity: 1;
-                }
-                100% {
-                    opacity: 0;
-                }
-            }
-
-            .sb-custom-part-mkqr4j6499yto5bf4p .cp_arrows .cp_arrow:before {
-                transform: rotate(30deg) translateX(-39%);
-                transform-origin: top left;
-            }
-
-            .sb-custom-part-mkqr4j6499yto5bf4p .cp_arrows .cp_arrow:after {
-                transform: rotate(-30deg) translateX(39%);
-                transform-origin: top right;
-            }
-
-            .sb-custom-part-mkqr4j6499yto5bf4p .cp_arrows .cp_arrow:before,
-            .sb-custom-part-mkqr4j6499yto5bf4p .cp_arrows .cp_arrow:after {
-                position: absolute;
-                top: 0;
-                left: 0;
-                display: block;
-                width: 40px;
-                height: 3px;
-                content: '';
-                background: #E91E63;
-            }
-
-            .sb-custom-part-mkqr4j6499yto5bf4p .cp_arrows *,
-            .sb-custom-part-mkqr4j6499yto5bf4p .cp_arrows *:before,
-            .sb-custom-part-mkqr4j6499yto5bf4p .cp_arrows *:after {
-                -webkit-box-sizing: border-box;
-                box-sizing: border-box;
-            }
-        </style>
-
         <picture>
-            <img src="https://file.mysquadbeyond.com/uploads/article_photo/photo/6480878/e1c51e6b-2a0d-42b2-aa35-921e0a4ef57d.jpg" class="lazyload">
+            <img src="https://file.mysquadbeyond.com/uploads/article_photo/photo/6746842/d3edb5e0-396f-4a94-afdd-f029dc873131.jpg" class="lazyload">
         </picture>
-        <p class="small">
-            <font color="#0a0e13"><span style="font-size: 11px;" class="sb-fs-free">※画像はイメージです</span></font>
-        </p>
-        <video controlslist="nodownload" playsinline="" loop="true" muted="true" autoplay="true" class="lazyload">
-            <source type="video/mp4" src="https://file.mysquadbeyond.com/uploads/article_photo/photo/6476129/20753317-a9d5-4679-98a0-6b1902f543ef.mp4">
-        </video>
-        <p class="small">
-            <font color="#0a0e13"><span style="font-size: 11px;" class="sb-fs-free">※2025年7月アンケート n=2,378人(TCB調べ)「TCBで受けた施術の満足度を教えてください」に対し「非常に満足している」「満足している」「概ね満足している」「やや満足している」と回答した方の割合</span></font>
-        </p>
-        <button class="next-btn">次の質問へ</button>
+        <video src="https://file.mysquadbeyond.com/uploads/article_photo/photo/6746848/d42f0790-df4f-4d03-ac72-c64506c64699.mp4" controls playsinline></video>
     </section>
 
     <!-- Q3 -->
     <section class="question-block hidden" id="q3">
-        <div class="step-indicator" id="stepIndicator3">
-            <div class="step-progress">
-                <div class="step-progress-fill" id="progressFill3"></div>
-            </div>
-            <div class="step-item completed" data-step="1">
-                <div class="step-circle">
-                    <span>1</span>
-                </div>
-            </div>
-            <div class="step-item completed" data-step="2">
-                <div class="step-circle">
-                    <span>2</span>
-                </div>
-            </div>
-            <div class="step-item active" data-step="3">
-                <div class="step-circle">
-                    <span>3</span>
-                </div>
-            </div>
-            <div class="step-item" data-step="4">
-                <div class="step-circle">
-                    <span>4</span>
-                </div>
-            </div>
-        </div>
-        <p class="question-text">TCB二重術で<br>一番魅力的なものはどれですか？</p>
-        <div class="wrap-video">
-            <video controlslist="nodownload" playsinline="" loop="" muted="" autoplay="" class="lazyload">
-                <source type="video/mp4" src="https://file.mysquadbeyond.com/uploads/article_photo/photo/6476290/3328f837-dd6b-4640-a3c9-5a9f330a25e3.mp4">
-            </video>
-        </div>
-        <div class="options">
-            <button class="option-btn" data-question="3" data-answer="1">両目0円〜<br>お試し感覚で二重術を受けられること</button>
-            <button class="option-btn" data-question="3" data-answer="2">ダウンタイム•キズ跡•痛みほぼゼロで<br>体への負担が少ないこと</button>
-            <button class="option-btn" data-question="3" data-answer="3">AIシミュレーションで<br>理想の二重を目指せること</button>
-        </div>
-        <p class="small">
-            <font color="#0a0e13"><span style="font-size: 11px;" class="sb-fs-free">※初回来院限定クーポン適用価格※1円以上の契約で割引適用
-                    <br><br>※画像はイメージです※個人差があります</span></font>
-        </p>
-    </section>
-
-    <!-- Q4 -->
-    <section class="question-block hidden" id="q4">
-        <div class="step-indicator" id="stepIndicator4">
-            <div class="step-progress">
-                <div class="step-progress-fill" id="progressFill4"></div>
-            </div>
-            <div class="step-item completed" data-step="1">
-                <div class="step-circle">
-                    <span>1</span>
-                </div>
-            </div>
-            <div class="step-item completed" data-step="2">
-                <div class="step-circle">
-                    <span>2</span>
-                </div>
-            </div>
-            <div class="step-item completed" data-step="3">
-                <div class="step-circle">
-                    <span>3</span>
-                </div>
-            </div>
-            <div class="step-item active" data-step="4">
-                <div class="step-circle">
-                    <span>4</span>
-                </div>
-            </div>
-        </div>
-        <p class="question-text">美容のプロによる無料カウンセリングに興味はありますか？</p>
-        <div class="wrap-video">
-            <video controlslist="nodownload" playsinline="" loop="" muted="" autoplay="" class="lazyload">
-                <source type="video/mp4" src="https://file.mysquadbeyond.com/uploads/article_photo/photo/6445455/c7e0ed1c-1837-428f-a5b3-7b0074b5da93.mp4">
-            </video>
-        </div>
-        <br>
-        <div class="options">
-            <button class="option-btn" data-question="4" data-answer="1">はい</button>
-            <button class="option-btn" data-question="4" data-answer="2">いいえ</button>
-        </div>
-    </section>
-
-    <!-- 結果へ誘導 -->
-    <section class="education-block hidden" id="result">
-        <h2 class="result-title fade-left">あなたにピッタリの二重が見つかりました</h2>
-        <p class="result-text fade-left">¥30,000OFFクーポンをお受け取りください</p>
-        <video controlslist="nodownload" playsinline="" loop="true" muted="true" autoplay="true" class="lazyload">
-            <source type="video/mp4" src="https://file.mysquadbeyond.com/uploads/article_photo/photo/6558807/1fe1c175-f98f-48f9-980f-ecfefbe56912.mp4">
-        </video>
         <div class="wrap-img">
-            <picture data-index="8">
-                <img src="https://file.mysquadbeyond.com/uploads/article_photo/photo/6476333/cc1976da-62f8-49a3-b6de-1049b27d77b2.jpg" width="750" height="500" class="content-img lazyload" alt="結果イメージ" data-index="8">
+            <picture data-index="1">
+                <img src="https://file.mysquadbeyond.com/uploads/article_photo/photo/6746530/a1b2c3d4-e5f8f-4634-a325-6cc0ff49fc95.jpg" width="750" height="500" class="content-img lazyload" alt="質問3画像" data-index="1">
             </picture>
         </div>
+        <div class="options">
+            <button class="option-btn" data-question="3" data-answer="1">「逆に濃くなる」と聞いたことがある</button>
+            <button class="option-btn" data-question="3" data-answer="2">赤み・痕が残らないか心配</button>
+            <button class="option-btn" data-question="3" data-answer="3">自分のシミに効くのか不安</button>
+            <button class="option-btn" data-question="3" data-answer="4">費用の想像がつかない</button>
+            <button class="option-btn" data-question="3" data-answer="5">職場や家庭でバレたくない</button>
+        </div>
+    </section>
 
-        <span style="color: #333333; font-family: arial, helvetica, sans-serif; font-size: 12pt;"><a href="https://daicon-link.com/link.php?i=phvux0557ut7&amp;m=mhvslb06vx8w&amp;sb_tracking=true" draggable="false" style=""><img class="a-main animate animate73 aligncenter lazyload" src="https://file.mysquadbeyond.com/uploads/article_photo/photo/6476344/f4094cff-8a06-45f3-a021-067e8e008b4e.png" draggable="false" height="194" width="570"></a></span>
-
-        <div class="main">
-            <p class="small">
-                <font color="#0a0e13"><span style="font-size: 11px;" class="sb-fs-free">※初回来院限定クーポン適用価格※1円以上の契約で割引適用
-                        <br><br>※画像はイメージです</span></font>
-            </p>
+    <!-- 教育コンテンツ3 -->
+    <section class="education-block hidden" id="edu3">
+        <div class="wrap-img">
+            <img src="https://file.mysquadbeyond.com/uploads/article_photo/photo/6746535/edu3-main.jpg" alt="" class="lazyload">
         </div>
 
-        <!-- よくある質問ウィジェット -->
-        <br><br>
-        <div data-sb-part-id="9699" class="sb-custom-part-mkqnidzkgvdn7rc08xs">
-            <script>
-                var sbAccordionQandA = sbAccordionQandA || {};
-                (function(_) {
-                    const target = '.js-accordion';
-                    _.method = function(el) {
-                        const items = el.querySelectorAll('.accordion-item');
-                        const triggers = el.querySelectorAll('.accordion-header');
-                        items.forEach((item) => {
-                            item.style.maxHeight = 0;
-                        });
-                        triggers.forEach((trigger) => {
-                            trigger.addEventListener('click', () => {
-                                const parent = trigger.parentNode;
-                                const isActive = parent.classList.contains('is-selected');
-                                items.forEach((item) => {
-                                    if (item.classList.contains('is-selected')) {
-                                        item.classList.remove('is-selected');
-                                    }
-                                });
-                                if (isActive) {
-                                    parent.classList.add('is-closing');
-                                    parent.querySelector('.accordion-body').addEventListener('transitionend', function() {
-                                        parent.classList.remove('is-closing');
-                                    }, {
-                                        once: true
-                                    });
-                                } else {
-                                    parent.classList.add('is-selected');
-                                }
-                            });
-                        });
-                    }
-                    _.init = function() {
-                        Array.from(document.querySelectorAll(target), el => {
-                            _.method(el);
-                        });
-                    };
-                })(sbAccordionQandA);
-            </script>
-            <script>
-                document.addEventListener('DOMContentLoaded', sbAccordionQandA.init, false);
-            </script>
-
-            <div class="accordion js-accordion">
-                <div class="accordion-wrap">
-                    <div class="accordion-item">
-                        <div class="accordion-header">
-                            <span class="first-letter">Q</span>
-                            <div class="accordion-title">患者さんの年齢層は何才くらいですか？</div>
-                        </div>
-                        <div class="accordion-body">
-                            <div class="accordion-content">18才〜65才以上の、幅広い年齢層の患者様にご来院をいただいております。</div>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+        <div class="video-carousel">
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="card">
+                            <img src="https://file.mysquadbeyond.com/uploads/article_photo/photo/6746717/abc811d9-1caa-473d-8fb1-7a39b2a498a4.jpg" alt="" class="lazyload">
                         </div>
                     </div>
-
-                    <div class="accordion-item">
-                        <div class="accordion-header">
-                            <span class="first-letter">Q</span>
-                            <div class="accordion-title">体への負担が心配です。</div>
-                        </div>
-                        <div class="accordion-body">
-                            <div class="accordion-content">
-                                <img src="https://file.mysquadbeyond.com/uploads/article_photo/photo/6558800/988f2810-8531-4e42-8ad6-2fc1f0d04e07.jpg" alt="" height="326" width="490" draggable="false" class="lazyload">
-                            </div>
+                    <div class="swiper-slide">
+                        <div class="card">
+                            <video autoplay muted loop playsinline class="lazyload" src="https://file.mysquadbeyond.com/uploads/article_photo/photo/6746718/bee852c3-980b-4a27-839b-1d9ce1e2a8f1.mp4"></video>
                         </div>
                     </div>
-
-                    <div class="accordion-item">
-                        <div class="accordion-header">
-                            <span class="first-letter">Q</span>
-                            <div class="accordion-title">キズ跡が目立ったり、腫れたりしないですか？</div>
-                        </div>
-                        <div class="accordion-body">
-                            <div class="accordion-content">
-                                <img src="https://file.mysquadbeyond.com/uploads/article_photo/photo/6558801/d5c6327f-e74e-4989-9841-20f88b2c1364.jpg" alt="" height="326" width="490" draggable="false" class="lazyload">
-                            </div>
+                    <div class="swiper-slide">
+                        <div class="card">
+                            <video autoplay muted loop playsinline class="lazyload" src="https://file.mysquadbeyond.com/uploads/article_photo/photo/6746720/7687a18c-4848-477f-a185-1789ff7c9938.mp4"></video>
                         </div>
                     </div>
-
-                    <div class="accordion-item">
-                        <div class="accordion-header">
-                            <span class="first-letter">Q</span>
-                            <div class="accordion-title">不自然な仕上がりにはならないでしょうか？</div>
-                        </div>
-                        <div class="accordion-body">
-                            <div class="accordion-content">
-                                <video controlslist="nodownload" playsinline="" loop="" muted="" autoplay="" class="lazyload">
-                                    <source type="video/mp4" src="https://file.mysquadbeyond.com/uploads/article_photo/photo/6476122/a41a1ad2-a96d-4339-acd1-8fd670f9a835.mp4">
-                                </video>
-                            </div>
+                    <div class="swiper-slide">
+                        <div class="card">
+                            <img src="https://file.mysquadbeyond.com/uploads/article_photo/photo/6746719/cb899040-4ee7-4b07-ab9a-d591a5ea1908.jpg" alt="" class="lazyload">
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
 
-                    <div class="accordion-item">
-                        <div class="accordion-header">
-                            <span class="first-letter">Q</span>
-                            <div class="accordion-title">再施術を受けたいのですが、可能ですか？</div>
-                        </div>
-                        <div class="accordion-body">
-                            <div class="accordion-content">
-                                <img src="https://file.mysquadbeyond.com/uploads/article_photo/photo/6481542/e49d40a7-8dea-4459-b2f8-3d36d60e5cb1.jpg" alt="" height="326" width="490" draggable="false" class="lazyload">
-                            </div>
-                        </div>
-                    </div>
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+        <div class="wrap-video">
+            <video controlslist="nodownload" playsinline loop muted autoplay class="lazyload">
+                <source type="video/mp4" src="https://file.mysquadbeyond.com/uploads/article_photo/photo/6745672/fa815446-ef0c-4aeb-babd-4ce468a2dfc1.mp4">
+            </video>
+        </div>
+        <div class="wrap-video">
+            <video controlslist="nodownload" playsinline loop muted autoplay class="lazyload">
+                <source type="video/mp4" src="https://file.mysquadbeyond.com/uploads/article_photo/photo/6745730/12aec595-c5f4-4f2f-adc7-46b631376cd4.mp4">
+            </video>
+        </div>
+        <div class="wrap-img">
+            <img src="https://file.mysquadbeyond.com/uploads/article_photo/photo/6745651/42f83a77-7e7d-4a26-8976-891dcb7b1bf4.jpg" alt="" class="lazyload">
+        </div>
+
+        <!-- ピカピカウィジェット -->
+        <div data-sb-part-id="17196" class="sb-custom-part-mn78vxyg3mospfn3s6r">
+            <div class="effect-area">
+                <div class="effect-container">
+                    <img src="https://file.mysquadbeyond.com/uploads/article_photo/photo/6745645/ede0a111-13f4-446e-af81-e5362cd01377.jpg" alt="" class="effect-img lazyload" draggable="false" height="400">
                 </div>
             </div>
         </div>
         <style>
-            @import url("https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&display=swap");
-
-            .accordion {
-                font-size: 16px;
-                max-width: 620px;
-                margin-left: auto;
-                margin-right: auto;
-                background-color: transparent;
-                font-family: "Zen Maru Gothic", sans-serif;
-                font-weight: 500;
-                line-height: 2;
-                color: #333333;
-            }
-
-            .sb-custom-part-mkqnidzkgvdn7rc08xs .accordion img {
-                width: 100%;
-            }
-
-            .sb-custom-part-mkqnidzkgvdn7rc08xs .accordion-item>*+* {
-                margin-block-start: 1em;
-            }
-
-            .sb-custom-part-mkqnidzkgvdn7rc08xs .accordion-item.is-selected .accordion-title::after {
-                content: "-";
-            }
-
-            .sb-custom-part-mkqnidzkgvdn7rc08xs .accordion-item.is-selected .accordion-body {
-                max-height: 100vh !important;
-            }
-
-            .sb-custom-part-mkqnidzkgvdn7rc08xs .accordion-item.is-closing .accordion-body {
-                max-height: 0;
-            }
-
-            .sb-custom-part-mkqnidzkgvdn7rc08xs .accordion-header,
-            .sb-custom-part-mkqnidzkgvdn7rc08xs .accordion-body {
-                background-color: #fff;
-                border-radius: 1em;
-                position: relative;
-                z-index: 1;
-                box-shadow: 0.25em 0.25em 0 0 #FE5E9C;
-            }
-
-            .sb-custom-part-mkqnidzkgvdn7rc08xs .accordion-header {
-                display: flex;
-                align-items: center;
-                gap: 0 1em;
-                padding: 1.5em;
-                cursor: pointer;
-            }
-
-            .sb-custom-part-mkqnidzkgvdn7rc08xs .accordion-header .first-letter {
-                display: block;
-                font-weight: 700;
-                color: #FE5E9C;
-                font-size: 3em;
-                line-height: 1;
-            }
-
-            .sb-custom-part-mkqnidzkgvdn7rc08xs .accordion-title {
-                font-size: 1.1em;
-                font-weight: 700;
-                line-height: 1.5;
-                padding-right: 2.5em;
-                position: relative;
-                flex-grow: 1;
-            }
-
-            .sb-custom-part-mkqnidzkgvdn7rc08xs .accordion-title::after {
-                content: "+";
-                font-weight: 700;
-                line-height: 1.5em;
-                color: #fff;
-                background-color: #FE5E9C;
-                width: 1.5em;
-                height: 1.5em;
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
+            .sb-custom-part-mn78vxyg3mospfn3s6r .effect-area {
+                margin: 0;
                 justify-content: center;
-                position: absolute;
-                right: 0em;
-                top: 50%;
-                translate: 0 -50%;
+                display: flex;
+                text-align: center;
             }
 
-            .sb-custom-part-mkqnidzkgvdn7rc08xs .accordion-body {
+            .sb-custom-part-mn78vxyg3mospfn3s6r .effect-container {
+                display: inline-block;
+                width: auto;
+                box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+                    7px 7px 20px 0px rgba(0, 0, 0, 0.1),
+                    4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+                transition: all 0.3s ease;
+                position: relative;
+                cursor: pointer;
+                border: none;
                 overflow: hidden;
-                transition: max-height 0.5s ease;
-                margin-bottom: 1em;
+                box-sizing: border-box;
+                animation: bound2Btn 2s ease infinite;
             }
 
-            .sb-custom-part-mkqnidzkgvdn7rc08xs .accordion-content {
-                padding: 1.5em;
+            .sb-custom-part-mn78vxyg3mospfn3s6r .effect-container:hover {
+                opacity: 0.7;
             }
 
-            @media (max-width: 500px) {
-                .sb-custom-part-mkqnidzkgvdn7rc08xs .accordion {
-                    font-size: 3vw;
-                }
+            .sb-custom-part-mn78vxyg3mospfn3s6r .effect-container:before {
+                position: absolute;
+                content: '';
+                display: inline-block;
+                top: -180px;
+                left: 0;
+                width: 30px;
+                height: 100%;
+                background-color: #fff;
+                animation: shiny-brite 4s ease-in-out infinite;
+            }
+
+            .sb-custom-part-mn78vxyg3mospfn3s6r .effect-container:active {
+                box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, .3),
+                    -4px -4px 6px 0 rgba(116, 125, 136, .2),
+                    inset -4px -4px 6px 0 rgba(255, 255, 255, .2),
+                    inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
+            }
+
+            .sb-custom-part-mn78vxyg3mospfn3s6r .effect-img {
+                width: 100%;
+                height: auto;
+                display: block;
+            }
+
+            @-webkit-keyframes shiny-brite {
+                0% { -webkit-transform: scale(0) rotate(45deg); opacity: 0; }
+                80% { -webkit-transform: scale(0) rotate(45deg); opacity: 0.5; }
+                81% { -webkit-transform: scale(8) rotate(45deg); opacity: 1; }
+                100% { -webkit-transform: scale(100) rotate(45deg); opacity: 0; }
             }
         </style>
+        <br>
+    </section>
 
-        <span style="color: #333333; font-family: arial, helvetica, sans-serif; font-size: 12pt;"><a href="https://daicon-link.com/link.php?i=phvux0557ut7&amp;m=mhvslb06vx8w&amp;sb_tracking=true" draggable="false" style=""><img class="a-main animate animate73 aligncenter lazyload" src="https://file.mysquadbeyond.com/uploads/article_photo/photo/6476344/f4094cff-8a06-45f3-a021-067e8e008b4e.png" draggable="false" height="194" width="570"></a></span>
+    <!-- 結果へ誘導 -->
+    <section class="education-block hidden" id="result">
+        <span class="cta-wrap" style="color:#333333; font-family:arial, helvetica, sans-serif; font-size:12pt;">
+            <a href="https://daicon-link.com/link.php?i=pi3uxbyc5c0f&amp;m=mi3ux6g25klx&amp;sb_tracking=true" draggable="false">
+                <img class="animate animate73 aligncenter lazyload cta-img" src="https://file.mysquadbeyond.com/uploads/article_photo/photo/6746219/5c7d304e-43a6-4fd0-a831-2ed0b3cb8094.png" draggable="false" height="194" width="570">
+            </a>
+        </span>
 
-        <div class="main">
-            <p class="small">
-                <font color="#0a0e13"><span style="font-size: 11px;" class="sb-fs-free">※初回来院限定クーポン適用価格※1円以上の契約で割引適用
-                        <br><br>※画像はイメージです</span></font>
-            </p>
+        <br>
+        <!-- 続きを見るボタン -->
+        <div class="result-more-trigger-wrap">
+            <a href="javascript:void(0);" class="result-more-btn">
+                <img src="https://file.mysquadbeyond.com/uploads/article_photo/photo/6734310/8408861a-e55f-4ff4-9b94-6ebe19902c63.jpg" class="lazyload">
+            </a>
+        </div>
+        <div id="resultMore" class="hidden">
+            <div class="wrap-img">
+                <img src="https://file.mysquadbeyond.com/uploads/article_photo/photo/6738019/d658211b-6252-4ca5-9c47-5a264bfa29db.jpg" alt="" class="lazyload">
+            </div>
+            <div class="wrap-img">
+                <img src="https://file.mysquadbeyond.com/uploads/article_photo/photo/6738156/2dc02cf4-88cf-4321-8efe-73b20dd106ab.jpg" alt="" class="lazyload">
+            </div>
+
+            <style>
+                @import url("https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&display=swap");
+
+                .accordion {
+                    font-size: 16px;
+                    max-width: 620px;
+                    margin-left: auto;
+                    margin-right: auto;
+                    background-color: transparent;
+                    padding: 1em;
+                    font-family: "Zen Maru Gothic", sans-serif;
+                    font-weight: 500;
+                    line-height: 2;
+                    color: #333333;
+                }
+
+                .sb-custom-part-mkqnidzkgvdn7rc08xs .accordion img { width: 100%; }
+                .sb-custom-part-mkqnidzkgvdn7rc08xs .accordion-item>*+* { margin-block-start: 1em; }
+                .sb-custom-part-mkqnidzkgvdn7rc08xs .accordion-item.is-selected .accordion-title::after { content: "-"; }
+                .sb-custom-part-mkqnidzkgvdn7rc08xs .accordion-item.is-selected .accordion-body { max-height: 100vh !important; }
+                .sb-custom-part-mkqnidzkgvdn7rc08xs .accordion-item.is-closing .accordion-body { max-height: 0; }
+
+                .sb-custom-part-mkqnidzkgvdn7rc08xs .accordion-header,
+                .sb-custom-part-mkqnidzkgvdn7rc08xs .accordion-body {
+                    background-color: #fff;
+                    border-radius: 1em;
+                    position: relative;
+                    z-index: 1;
+                    box-shadow: 0.25em 0.25em 0 0 #FE5E9C;
+                }
+
+                .sb-custom-part-mkqnidzkgvdn7rc08xs .accordion-header {
+                    display: flex;
+                    align-items: center;
+                    gap: 0 1em;
+                    padding: 1.5em;
+                    cursor: pointer;
+                }
+
+                .sb-custom-part-mkqnidzkgvdn7rc08xs .accordion-header .first-letter {
+                    display: block;
+                    font-weight: 700;
+                    color: #FE5E9C;
+                    font-size: 3em;
+                    line-height: 1;
+                }
+
+                .sb-custom-part-mkqnidzkgvdn7rc08xs .accordion-title {
+                    font-size: 1.1em;
+                    font-weight: 700;
+                    line-height: 1.5;
+                    padding-right: 2.5em;
+                    position: relative;
+                    flex-grow: 1;
+                }
+
+                .sb-custom-part-mkqnidzkgvdn7rc08xs .accordion-title::after {
+                    content: "+";
+                    font-weight: 700;
+                    line-height: 1.5em;
+                    color: #fff;
+                    background-color: #FE5E9C;
+                    width: 1.5em;
+                    height: 1.5em;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    position: absolute;
+                    right: 0em;
+                    top: 50%;
+                    translate: 0 -50%;
+                }
+
+                .sb-custom-part-mkqnidzkgvdn7rc08xs .accordion-body {
+                    overflow: hidden;
+                    transition: max-height 0.5s ease;
+                    margin-bottom: 1em;
+                }
+
+                .sb-custom-part-mkqnidzkgvdn7rc08xs .accordion-content { padding: 1.5em; }
+
+                @media (max-width: 500px) {
+                    .sb-custom-part-mkqnidzkgvdn7rc08xs .accordion { font-size: 3vw; }
+                }
+            </style>
+
+            <span class="cta-wrap" style="color:#333333; font-family:arial, helvetica, sans-serif; font-size:12pt;">
+                <a href="https://daicon-link.com/link.php?i=pi3uxbyc5c0f&amp;m=mi3ux6g25klx&amp;sb_tracking=true" draggable="false">
+                    <img class="animate animate73 aligncenter lazyload cta-img" src="https://file.mysquadbeyond.com/uploads/article_photo/photo/6746219/5c7d304e-43a6-4fd0-a831-2ed0b3cb8094.png" draggable="false" height="194" width="570">
+                </a>
+            </span>
+
+            <br>
+            <div class="main last-image">
+                <img src="https://file.mysquadbeyond.com/uploads/article_photo/photo/6716341/64cd9bbe-9c23-48e1-9f33-431ba882767a.jpg" class="lazyload">
+            </div>
         </div>
     </section>
 </div>
-
-    <!-- script.js -->
     <script>
     $(function() {
+        const swiper = new Swiper(".mySwiper", {
+            slidesPerView: 1.3,
+            spaceBetween: 12,
+            centeredSlides: true,
+            loop: true,
+        });
         const answers = {
             1: null,
             2: null,
@@ -1543,43 +1029,32 @@ a.shover:hover * {
             updateProgressBar(questionNum, questionNum);
 
             setTimeout(() => {
-                if (questionNum < 4) {
-                    if (questionNum === 3) {
-                        $(`#q4`).removeClass('hidden').addClass('fade-in');
-                        smoothScroll(`#q4`);
-                    } else {
-                        $(`#edu${questionNum}`).removeClass('hidden').addClass('fade-in');
-                        smoothScroll(`#edu${questionNum}`);
-                    }
-                } else {
+                if (questionNum === 1) {
+                    $('#q2').removeClass('hidden').addClass('fade-in');
+                    smoothScroll('#q2');
+
+                } else if (questionNum === 2) {
+                    $('#edu2').removeClass('hidden').addClass('fade-in');
+                    $('#q3').removeClass('hidden').addClass('fade-in');
+                    smoothScroll('#edu2');
+
+                } else if (questionNum === 3) {
+                    $('#edu3').removeClass('hidden').addClass('fade-in');
                     $('#result').removeClass('hidden');
+
                     $('#result .fade-left').each(function(index) {
                         $(this).css('animation-delay', `${index * 0.3 + 0.5}s`).addClass('fade-in');
                     });
-                    smoothScroll('#result');
+
+                    smoothScroll('#edu3');
                     triggerConfetti();
                 }
             }, 300);
         });
-
-        $(document).on('click', '.next-btn', function() {
-            const $currentEdu = $(this).closest('.education-block');
-            const currentNum = $currentEdu.attr('id').replace('edu', '');
-            const nextNum = parseInt(currentNum) + 1;
-
-            if (nextNum <= 4) {
-                $(`#q${nextNum}`).removeClass('hidden').addClass('fade-in');
-                updateProgressBar(nextNum, nextNum);
-                smoothScroll(`#q${nextNum}`);
-            } else {
-                $('#result').removeClass('hidden');
-                $('#result .fade-left').each(function(index) {
-                    $(this).css('animation-delay', `${index * 0.3 + 0.5}s`).addClass('fade-in');
-                });
-                smoothScroll('#result');
-            }
+        $(document).on('click', '.result-more-btn', function() {
+            $('#resultMore').removeClass('hidden').addClass('fade-in');
+            smoothScroll('#resultMore');
         });
-
         $(document).on('click', '.cta-button', function(e) {
             const params = new URLSearchParams();
             Object.entries(answers).forEach(([q, a]) => {
@@ -1590,6 +1065,6 @@ a.shover:hover * {
         // 初期化
         updateProgressBar(1, 1);
     });
-    </script>
+</script>
 </body>
 </html>
